@@ -5,8 +5,7 @@ This document models the data flow for the Booking System, verified using Browse
 ---
 
 ## 1. CREATE (C) - Adding a Resource
-**Endpoint:** `POST /api/resources`  
-**Description:** Captures the resource name/type from the frontend form and saves it to the database.
+**Endpoint:** `POST /api/resources`
 
 ```mermaid
 sequenceDiagram
@@ -32,7 +31,6 @@ sequenceDiagram
         deactivate B
         F-->>U: Display validation error message
     end
-
     sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -56,7 +54,6 @@ sequenceDiagram
     deactivate B
     F->>F: Build Table Rows (DOM Manipulation)
     F-->>U: Displays Resource List in Table
-
     sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -81,7 +78,6 @@ sequenceDiagram
         deactivate B
         F-->>U: Error Alert: "Resource not found"
     end
-
     sequenceDiagram
     autonumber
     participant U as User (Browser)
