@@ -1,5 +1,4 @@
-Markdown
-
+markdown
 # 📘 Booking System CRUD Data Flow (Phase 6)
 
 This document models the data flow for the Booking System, verified using Browser Developer Tools.
@@ -37,8 +36,6 @@ sequenceDiagram
 2. READ (R) - Fetching the List
 Endpoint: GET /api/resources
 
-Code snippet
-
 sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -64,8 +61,6 @@ sequenceDiagram
     F-->>U: Displays Resource List in Table
 3. UPDATE (U) - Modifying a Resource
 Endpoint: PUT /api/resources/:id
-
-Code snippet
 
 sequenceDiagram
     autonumber
@@ -94,8 +89,6 @@ sequenceDiagram
     end
 4. DELETE (D) - Removing a Resource
 Endpoint: DELETE /api/resources/:id
-
-Code snippet
 
 sequenceDiagram
     autonumber
