@@ -33,14 +33,7 @@ sequenceDiagram
         F-->>U: Display validation error message
     end
 
-    ---
-
-## 2. READ (R) - Fetching the List
-**Endpoint:** `GET /api/resources`  
-**Description:** Retrieves all resource records from the database to display in the UI table.
-
-```mermaid
-sequenceDiagram
+    sequenceDiagram
     autonumber
     participant U as User (Browser)
     participant F as Frontend (resources.js)
@@ -64,48 +57,32 @@ sequenceDiagram
     F->>F: Build Table Rows (DOM Manipulation)
     F-->>U: Displays Resource List in Table
 
-    ---
-
-## 3. UPDATE (U) - Modifying a Resource
-**Endpoint:** `PUT /api/resources/:id`  
-**Method:** `PUT`  
-**Status Code:** `200 OK`
-
-```mermaid
-sequenceDiagram
+    sequenceDiagram
     autonumber
     participant U as User (Browser)
     participant F as Frontend (form.js)
     participant B as Backend (resourceRoutes.js)
     participant DB as PostgreSQL
 
-    U->>F: Edits resource name & clicks "Save"
+    U->>F: Changes Name/Type & clicks "Save"
     F->>B: PUT /api/resources/:id (JSON Body)
     activate B
     
-    B->>DB: UPDATE resources SET name=$1, type=$2 WHERE id=$3;
+    B->>DB: UPDATE resources SET name=$1, type=$2 WHERE id=$3
     activate DB
     
-    alt Resource Exists
+    alt Resource Found & Valid
         DB-->>B: Row updated successfully
         deactivate DB
-        B-->>F: 200 OK (Updated Object)
-        F-->>U: UI updates and shows success message
-    else Resource Not Found
+        B-->>F: 200 OK (Updated Data)
+        F-->>U: UI updates row & shows success message
+    else Resource Not Found (e.g. ID 999)
         B-->>F: 404 Not Found
         deactivate B
         F-->>U: Error Alert: "Resource not found"
     end
 
-
-    ---
-
-## 4. DELETE (D) - Removing a Resource
-**Endpoint:** `DELETE /api/resources/:id`  
-**Description:** Permanently removes a resource from the database based on its unique ID.
-
-```mermaid
-sequenceDiagram
+    sequenceDiagram
     autonumber
     participant U as User (Browser)
     participant F as Frontend (resources.js)
