@@ -33,9 +33,12 @@ sequenceDiagram
         deactivate B
         F-->>U: Display validation error message
     end
-2. READ (R) - Fetching the List
-Endpoint: GET /api/resources
+```
 
+## 2. READ (R) - Fetching the List
+**Endpoint:** `GET /api/resources`
+
+```mermaid
 sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -59,9 +62,12 @@ sequenceDiagram
     deactivate B
     F->>F: Build Table Rows (DOM Manipulation)
     F-->>U: Displays Resource List in Table
-3. UPDATE (U) - Modifying a Resource
-Endpoint: PUT /api/resources/:id
+```
 
+## 3. UPDATE (U) - Modifying a Resource
+**Endpoint:** `PUT /api/resources/:id`
+
+```mermaid
 sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -87,9 +93,12 @@ sequenceDiagram
         deactivate B
         F-->>U: Error Alert: "Resource not found"
     end
-4. DELETE (D) - Removing a Resource
-Endpoint: DELETE /api/resources/:id
+```
 
+## 4. DELETE (D) - Removing a Resource
+**Endpoint:** `DELETE /api/resources/:id`
+
+```mermaid
 sequenceDiagram
     autonumber
     participant U as User (Browser)
@@ -116,3 +125,4 @@ sequenceDiagram
         deactivate B
         F-->>U: Error Alert: "Could not find resource to delete"
     end
+```
