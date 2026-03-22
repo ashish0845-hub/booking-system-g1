@@ -25,13 +25,12 @@ sequenceDiagram
         DB-->>B: Row Inserted Successfully
         deactivate DB
         B-->>F: 201 Created (New Resource Object)
-        deactivate B
         F-->>U: Success Toast & UI Update
     else Validation Failed (400 Bad Request)
         B-->>F: 400 Bad Request (Missing fields)
-        deactivate B
         F-->>U: Display validation error message
     end
+    deactivate B
 ```
 
 ## 2. READ (R) - Fetching the List
@@ -85,13 +84,12 @@ sequenceDiagram
         DB-->>B: Row updated successfully
         deactivate DB
         B-->>F: 200 OK (Updated Data)
-        deactivate B
         F-->>U: UI updates row & shows success message
     else Resource Not Found (e.g. ID 999)
         B-->>F: 404 Not Found
-        deactivate B
         F-->>U: Error Alert: "Resource not found"
     end
+    deactivate B
 ```
 
 ## 4. DELETE (D) - Removing a Resource
@@ -116,12 +114,11 @@ sequenceDiagram
         DB-->>B: Row deleted (Success)
         deactivate DB
         B-->>F: 204 No Content
-        deactivate B
         F->>F: Remove row from DOM
         F-->>U: Resource disappears from list
     else Resource Not Found (404)
         B-->>F: 404 Not Found
-        deactivate B
         F-->>U: Error Alert: "Could not find resource to delete"
     end
+    deactivate B
 ```
